@@ -9,14 +9,14 @@ namespace MyProject.Controllers
 {
     public class UserController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public UserController(ApplicationDbContext db)
+        readonly ApplicationDbContext db;
+        public UserController(ApplicationDbContext context)
         {
-            _db = db;
+            db = context;
         }
         public IActionResult Index()
         {
-            return View();
+            return View(db.Users.ToList());
         }
     }
 }
