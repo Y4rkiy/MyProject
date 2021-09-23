@@ -6,13 +6,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyProject.Models
 {
-    public class User
+    public class AspNetUsers
     {
         [Key]
         public int Id { get; set; }
-        public int Name { get; set; }
-        public int Tasks { get; set; }
-        public int SolvedTasksCount { get; set; }
-        public int CreatedTasksCount { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }
