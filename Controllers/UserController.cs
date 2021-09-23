@@ -16,7 +16,7 @@ namespace MyProject.Controllers
         }
         public IActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.IdentityUsers.ToList());
         }
     }
 }

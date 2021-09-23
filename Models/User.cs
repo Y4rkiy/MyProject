@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyProject.Models
 {
-    public class AspNetUsers
+    public class User
     {
         [Key]
         public int Id { get; set; }

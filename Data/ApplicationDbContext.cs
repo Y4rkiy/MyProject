@@ -8,7 +8,7 @@ namespace MyProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<AspNetUsers> Users { get; set; }
+        public DbSet<User> IdentityUsers { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

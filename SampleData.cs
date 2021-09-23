@@ -8,20 +8,20 @@ namespace MyProject
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            if (!context.Users.Any())
+            if (!context.IdentityUsers.Any())
             {
-                context.Users.AddRange(
-                    new AspNetUsers
+                context.IdentityUsers.AddRange(
+                    new User
                     {
                         Name = "Jack",
                         Email = "yy@gm.com"
                     },
-                    new AspNetUsers
+                    new User
                     {
                         Name = "Michael",
                         Email = "yy@gm.com"
                     },
-                    new AspNetUsers
+                    new User
                     {
                         Name = "Jon",
                         Email = "gg@gm.com"
