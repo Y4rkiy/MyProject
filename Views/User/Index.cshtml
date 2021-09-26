@@ -1,5 +1,5 @@
 ﻿
-@model System.Security.Claims.ClaimsPrincipal
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
 @{
 	ViewData["Title"] = "Index";
 }
@@ -7,6 +7,12 @@
 <h1>Index</h1>
 <ul>
 
-		<li>@User.ToString()</li>
-	
+	<li>@User.Identity.Name</li>
+	@foreach (var user in Model)
+	{
+		if (@User.Identity.Name == @user.UserName)
+		{
+			<li>@user.Email</li>
+		}
+	}
 </ul>

@@ -16,8 +16,12 @@ namespace MyProject.Controllers
         }
         public IActionResult Index()
         {
-            return View(User);
+            var users = _context.Users.ToList();
+
+            return View(users);
         }
+    
     }
+    
 }
 
