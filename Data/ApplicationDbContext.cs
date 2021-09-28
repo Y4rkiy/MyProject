@@ -13,5 +13,6 @@ namespace MyProject.Data
         {
             //Database.EnsureCreated();
         }
+        public DbSet<MyProject.Models.MathTask> MathTask { get; set; }
     }
 }
