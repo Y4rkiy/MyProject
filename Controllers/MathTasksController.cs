@@ -21,8 +21,16 @@ namespace MyProject.Controllers
         }
 
         // GET: MathTasks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+            var mathTasks = from t in _context.MathTask
+                         select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                mathTasks = mathTasks.Where(s => s.Name.Contains(searchString)||s.Text.Contains(searchString));
+            }
+            
             return View(await _context.MathTask.ToListAsync());
         }
 
