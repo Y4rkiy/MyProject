@@ -46,6 +46,21 @@ namespace MyProject.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
+            //migrationBuilder.CreateTable(
+            //    name: "MathTask",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Them = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_MathTask", x => x.Id);
+            //    });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
@@ -208,6 +223,9 @@ namespace MyProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "MathTask");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

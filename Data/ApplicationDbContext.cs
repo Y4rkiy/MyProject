@@ -11,7 +11,7 @@ namespace MyProject.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            //Database.EnsureCreated();
+            //database.ensurecreated();
         }
         public DbSet<MyProject.Models.MathTask> MathTask { get; set; }
     }
