@@ -21,18 +21,18 @@ namespace MyProject.Controllers
         }
 
         // GET: MathTasks
-        public async Task<IActionResult> Index(string searchString)
-        {
-            var mathTasks = from t in _context.MathTask
-                         select t;
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    var mathTasks = from t in _context.MathTask
+        //                 select t;
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                mathTasks = mathTasks.Where(s => s.Name.Contains(searchString)||s.Text.Contains(searchString));
-            }
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        mathTasks = mathTasks.Where(s => s.Name.Contains(searchString)||s.Text.Contains(searchString));
+        //    }
             
-            return View(await _context.MathTask.ToListAsync());
-        }
+        //    return View(await _context.MathTask.ToListAsync());
+        //}
 
         // GET: MathTasks/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -65,7 +65,7 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them")] MathTask mathTask)
+        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them, UserId")] MathTask mathTask)
         {
             if (ModelState.IsValid)
             {
