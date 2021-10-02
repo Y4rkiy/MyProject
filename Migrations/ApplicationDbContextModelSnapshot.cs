@@ -238,14 +238,34 @@ namespace MyProject.Migrations
                     b.Property<string>("Them")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("MathTask");
+                });
+
+            modelBuilder.Entity("MyProject.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("MathTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaskId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MathTaskId");
+
+                    b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -308,9 +328,23 @@ namespace MyProject.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("MyProject.Models.Tag", b =>
+                {
+                    b.HasOne("MyProject.Models.MathTask", "MathTask")
+                        .WithMany("Tags")
+                        .HasForeignKey("MathTaskId");
+
+                    b.Navigation("MathTask");
+                });
+
             modelBuilder.Entity("MyProject.Models.ApplicationUser", b =>
                 {
                     b.Navigation("MathTasks");
+                });
+
+            modelBuilder.Entity("MyProject.Models.MathTask", b =>
+                {
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,10 @@ namespace MyProject.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            //database.ensurecreated();
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
         public DbSet<MyProject.Models.MathTask> MathTask { get; set; }
+        public DbSet<MyProject.Models.Tag> Tag { get; set; }
     }
 }
