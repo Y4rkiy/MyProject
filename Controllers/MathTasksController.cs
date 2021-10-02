@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,18 +22,18 @@ namespace MyProject.Controllers
         }
 
         // GET: MathTasks
-        //public async Task<IActionResult> Index(string searchString)
-        //{
-        //    var mathTasks = from t in _context.MathTask
-        //                 select t;
+        public async Task<IActionResult> Index(string searchString)
+        {
+            var mathTasks = from t in _context.MathTask
+                            select t;
 
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        mathTasks = mathTasks.Where(s => s.Name.Contains(searchString)||s.Text.Contains(searchString));
-        //    }
-            
-        //    return View(await _context.MathTask.ToListAsync());
-        //}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                mathTasks = mathTasks.Where(s => s.Name.Contains(searchString) || s.Text.Contains(searchString));
+            }
+
+            return View(await _context.MathTask.ToListAsync());
+        }
 
         // GET: MathTasks/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -65,10 +66,11 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them, UserId")] MathTask mathTask)
+        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them,ApplicationUserId")] MathTask mathTask)
         {
             if (ModelState.IsValid)
             {
+                mathTask.ApplicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _context.Add(mathTask);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -99,7 +101,7 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Text,Them")] MathTask mathTask)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Text,Them, ApplicationUserId")] MathTask mathTask)
         {
             if (id != mathTask.Id)
             {
