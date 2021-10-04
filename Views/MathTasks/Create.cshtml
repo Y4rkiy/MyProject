@@ -22,10 +22,8 @@
 				<input asp-for="Text" class="form-control" />
 				<span asp-validation-for="Text" class="text-danger"></span>
 			</div>
-			<div class="form-group">
-				<label asp-for="Them" class="control-label"></label>
-				<input asp-for="Them" class="form-control" />
-				<span asp-validation-for="Them" class="text-danger"></span>
+			<div>
+				@Html.DropDownList("Them", new SelectList(new string[] { "Algebra", "Geometry", "Physic", "Programming" }), "Choose them")
 			</div>
 
 			<div class="form-group">
