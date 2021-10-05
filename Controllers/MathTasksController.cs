@@ -66,7 +66,7 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them,ApplicationUserId")] MathTask mathTask)
+        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them,ApplicationUserId, Tags")] MathTask mathTask)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Text,Them, ApplicationUserId")] MathTask mathTask)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Text,Them, ApplicationUserId, Tags")] MathTask mathTask)
         {
             if (id != mathTask.Id)
             {
