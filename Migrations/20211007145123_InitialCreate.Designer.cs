@@ -10,7 +10,7 @@ using MyProject.Data;
 namespace MyProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211002201124_InitialCreate")]
+    [Migration("20211007145123_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -237,7 +237,7 @@ namespace MyProject.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Them")
+                    b.Property<string>("Topic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

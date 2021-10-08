@@ -159,8 +159,8 @@ namespace MyProject.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Topic = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Them = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>

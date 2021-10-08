@@ -66,7 +66,7 @@ namespace MyProject.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Text,Them,ApplicationUserId, Tags")] MathTask mathTask)
+        public async Task<IActionResult> Create([Bind("Id,Name,Topic, Text, ApplicationUserId, Tags")] MathTask mathTask)
         {
             if (ModelState.IsValid)
             {

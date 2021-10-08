@@ -11,8 +11,9 @@ namespace MyProject.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Topic { get; set; }
         public string Text { get; set; }
-        public string Them { get; set; }
+        
 
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

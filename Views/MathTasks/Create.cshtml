@@ -36,13 +36,6 @@
 				<span asp-validation-for="Tags" class="text-danger"></span>
 
 			</div>
-			<script>
-				$(document).ready(function(){
-				$('input[name="Tags"]').amsifySuggestags({
-				suggestions: ['Task', "Training", "HelpMePlease"],
-				});
-				});
-			</script>
 			<div class="form-group">
 				<input type="submit" value="Create" class="btn btn-primary" />
 			</div>
@@ -57,5 +50,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<link rel="stylesheet" type="text/css" href="css/amsify.suggestags.css">
-<script type="text/javascript" src="js/jquery.amsify.suggestags.js"></script>

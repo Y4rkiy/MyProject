@@ -235,7 +235,7 @@ namespace MyProject.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Them")
+                    b.Property<string>("Topic")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
