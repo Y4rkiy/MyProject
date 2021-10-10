@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +22,23 @@ namespace MyProject.Controllers
         {
             _context = context;
         }
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            Console.WriteLine("POST OK " + file.FileName);
 
+            if (file.Length > 0)
+            {
+                var filePath = Path.GetTempFileName();
+                Console.WriteLine(filePath.ToString());
+                Console.WriteLine("FILENAME " + file.FileName);
+                using (var stream = System.IO.File.Create(@"C:\Users\dm" + file.FileName))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
+            return Ok();
+        }
         // GET: MathTasks
         public async Task<IActionResult> Index(string searchString)
         {

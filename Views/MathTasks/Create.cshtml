@@ -10,6 +10,7 @@
 <h4>MathTask</h4>
 <hr />
 <link rel='stylesheet' href='https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'>
+<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
 <link href="~/css/style.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-4">
@@ -41,6 +42,9 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+        <form action="" method="post" enctype="multipart/form-data" id="my-form">
+            <input type="file" name="file" />
+        </form>
     </div>
 </div>
 
@@ -53,5 +57,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <script src="~/js/script.js"></script>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
