@@ -4,42 +4,43 @@
     ViewData["Title"] = "Create";
 }
 
+
 <h1>Create</h1>
 
 <h4>MathTask</h4>
 <hr />
+<link rel='stylesheet' href='https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'>
+<link href="~/css/style.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-4">
-		<form asp-action="Create">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
-				<label asp-for="Name" class="control-label"></label>
-				<input asp-for="Name" class="form-control" />
-				<span asp-validation-for="Name" class="text-danger"></span>
-			</div>
-			<div>
-				@Html.DropDownList("Them", new SelectList(new string[] { "Algebra", "Geometry", "Physic", "Programming" }), "Choose them")
-			</div>
-			<div class="form-group">
-				<label asp-for="Text" class="control-label"></label>
-				<input asp-for="Text" class="form-control" />
-				<span asp-validation-for="Text" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Text" class="control-label"></label>
-				<input asp-for="Text" class="form-control" />
-				<span asp-validation-for="Text" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Tags" class="control-label"></label>
-				<input asp-for="Tags" class="form-control" name="Tags">
-				<span asp-validation-for="Tags" class="text-danger"></span>
-
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Create" class="btn btn-primary" />
-			</div>
-		</form>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                @Html.DropDownList("Them", new SelectList(new string[] { "Algebra", "Geometry", "Physic", "Programming" }), "Choose them")
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tagsinput Autocomplete</label>
+                <input type="text" id="tag1" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
 
@@ -48,5 +49,9 @@
 </div>
 
 @section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="~/js/script.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
