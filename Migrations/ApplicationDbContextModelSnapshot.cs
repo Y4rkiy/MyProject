@@ -245,6 +245,31 @@ namespace MyProject.Migrations
                     b.ToTable("MathTask");
                 });
 
+            modelBuilder.Entity("MyProject.Models.RightAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("MathTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("MathTaskId");
+
+                    b.ToTable("RightAnswer");
+                });
+
             modelBuilder.Entity("MyProject.Models.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -328,6 +353,19 @@ namespace MyProject.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("MyProject.Models.RightAnswer", b =>
+                {
+                    b.HasOne("MyProject.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("MyProject.Models.MathTask", null)
+                        .WithMany("RightAnswers")
+                        .HasForeignKey("MathTaskId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("MyProject.Models.Tag", b =>
                 {
                     b.HasOne("MyProject.Models.MathTask", "MathTask")
@@ -344,6 +382,8 @@ namespace MyProject.Migrations
 
             modelBuilder.Entity("MyProject.Models.MathTask", b =>
                 {
+                    b.Navigation("RightAnswers");
+
                     b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618

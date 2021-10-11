@@ -16,5 +16,6 @@ namespace MyProject.Data
         }
         public DbSet<MyProject.Models.MathTask> MathTask { get; set; }
         public DbSet<MyProject.Models.Tag> Tag { get; set; }
+        public DbSet<MyProject.Models.RightAnswer> RightAnswer { get; set; }
     }
 }

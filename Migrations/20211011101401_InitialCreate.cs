@@ -175,6 +175,33 @@ namespace MyProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RightAnswer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    MathTaskId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RightAnswer", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RightAnswer_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_RightAnswer_MathTask_MathTaskId",
+                        column: x => x.MathTaskId,
+                        principalTable: "MathTask",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tag",
                 columns: table => new
                 {
@@ -240,6 +267,16 @@ namespace MyProject.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RightAnswer_ApplicationUserId",
+                table: "RightAnswer",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RightAnswer_MathTaskId",
+                table: "RightAnswer",
+                column: "MathTaskId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tag_MathTaskId",
                 table: "Tag",
                 column: "MathTaskId");
@@ -261,6 +298,9 @@ namespace MyProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "RightAnswer");
 
             migrationBuilder.DropTable(
                 name: "Tag");
